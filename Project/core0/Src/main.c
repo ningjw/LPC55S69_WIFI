@@ -78,7 +78,7 @@ void main(void)
     
 	/* 创建ADC_Task任务 参数依次为：入口函数、名字、栈大小、函数参数、优先级、控制块 */ 
     xTaskCreate((TaskFunction_t )ADC_AppTask, "ADC_Task",1024,NULL, 4,&ADC_TaskHandle);
- 
+	
 	/* 创建Battery_Task任务 参数依次为：入口函数、名字、栈大小、函数参数、优先级、控制块 */ 
     xTaskCreate((TaskFunction_t )BAT_AppTask,"BAT_Task",512,NULL, 2,&BAT_TaskHandle);
 	
@@ -118,7 +118,7 @@ void UTICK0_Callback(void)
 {
 	//在采集数据时,每间隔1S获取一次温度数据
 	if (g_sys_para.tempCount < sizeof(Temperature) && g_sys_para.WorkStatus){
-		Temperature[g_sys_para.tempCount++] = TMP101_ReadTemp();
+		Temperature[g_sys_para.tempCount++] = MXL_ReadObjTemp();
 	}
 	
 	if(g_sys_para.sysIdleCount++ >= (g_sys_flash_para.autoPwrOffIdleTime + 1)*60-5) { //定时时间到

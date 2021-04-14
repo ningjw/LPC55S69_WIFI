@@ -14,7 +14,6 @@
   **********************************************************************/
 void BAT_AppTask(void)
 {
-
     // Enable auto measurement of battery voltage and temperature
     LTC2942_SetADCMode(LTC2942_ADC_AUTO);
 	

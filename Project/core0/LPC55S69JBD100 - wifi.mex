@@ -123,22 +123,17 @@
                         <data>true</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="Peripheral" resourceId="CTIMER2" description="Peripheral CTIMER2 is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
-                     <feature name="initialized" evaluation="equal">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="Peripheral" resourceId="CTIMER0" description="Peripheral CTIMER0 is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
-                     <feature name="initialized" evaluation="equal">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
                   <dependency resourceType="Peripheral" resourceId="CTIMER1" description="Peripheral CTIMER1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
                      <feature name="initialized" evaluation="equal">
                         <data>true</data>
                      </feature>
                   </dependency>
                   <dependency resourceType="Peripheral" resourceId="USBFSH" description="Peripheral USBFSH is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="Peripheral" resourceId="FLEXCOMM1" description="Peripheral FLEXCOMM1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
                      <feature name="initialized" evaluation="equal">
                         <data>true</data>
                      </feature>
@@ -327,22 +322,6 @@
                         <pin_feature name="direction" value="OUTPUT"/>
                      </pin_features>
                   </pin>
-                  <pin peripheral="GPIO" signal="PIO0, 14" pin_num="C13" pin_signal="PIO0_14/FC1_RTS_SCL_SSEL1/UTICK_CAP1/CT_INP1/SCT_GPI1/FC1_TXD_SCL_MISO_WS/PLU_IN1/SECURE_GPIO0_14">
-                     <pin_features>
-                        <pin_feature name="identifier" value="TMP_SCL"/>
-                        <pin_feature name="direction" value="OUTPUT"/>
-                        <pin_feature name="gpio_init_state" value="true"/>
-                        <pin_feature name="mode" value="pullUp"/>
-                     </pin_features>
-                  </pin>
-                  <pin peripheral="GPIO" signal="PIO0, 13" pin_num="C12" pin_signal="PIO0_13/FC1_CTS_SDA_SSEL0/UTICK_CAP0/CT_INP0/SCT_GPI0/FC1_RXD_SDA_MOSI_DATA/PLU_IN0/SECURE_GPIO0_13">
-                     <pin_features>
-                        <pin_feature name="identifier" value="TMP_SDA"/>
-                        <pin_feature name="direction" value="OUTPUT"/>
-                        <pin_feature name="gpio_init_state" value="true"/>
-                        <pin_feature name="mode" value="pullUp"/>
-                     </pin_features>
-                  </pin>
                   <pin peripheral="FLEXCOMM6" signal="RXD_SDA_MOSI_DATA" pin_num="B3" pin_signal="PIO1_13/FC6_RXD_SDA_MOSI_DATA/CT_INP6/USB0_OVERCURRENTN/USB0_FRAME/SD0_CARD_DET_N">
                      <pin_features>
                         <pin_feature name="direction" value="OUTPUT"/>
@@ -416,8 +395,6 @@
                   </pin>
                   <pin peripheral="FLEXCOMM5" signal="RXD_SDA_MOSI_DATA" pin_num="M2" pin_signal="PIO0_8/FC3_SSEL3/SD0_CMD/FC5_RXD_SDA_MOSI_DATA/SWO/SECURE_GPIO0_8"/>
                   <pin peripheral="FLEXCOMM5" signal="TXD_SCL_MISO_WS" pin_num="L13" pin_signal="PIO0_9/FC3_SSEL2/SD0_POW_EN/FC5_TXD_SCL_MISO_WS/SECURE_GPIO0_9/ACMP0_B"/>
-                  <pin peripheral="CTIMER2" signal="MATCH, 1" pin_num="B2" pin_signal="PIO1_4/FC0_SCK/SD0_D0/CTIMER2_MAT1/SCT0_OUT0/FREQME_GPIO_CLK_A"/>
-                  <pin peripheral="CTIMER0" signal="MATCH, 0" pin_num="L12" pin_signal="PIO0_0/FC3_SCK/CTIMER0_MAT0/SCT_GPI0/SD1_CARD_INT_N/SECURE_GPIO0_0/ACMP0_A"/>
                   <pin peripheral="CTIMER1" signal="CAPTURE, 0" pin_num="F5" pin_signal="PIO0_1/FC3_CTS_SDA_SSEL0/CT_INP0/SCT_GPI1/SD1_CLK/CMP0_OUT/SECURE_GPIO0_1">
                      <pin_features>
                         <pin_feature name="identifier" value="SPD_FREQ_CAP"/>
@@ -432,6 +409,18 @@
                      </pin_features>
                   </pin>
                   <pin peripheral="USBFSH" signal="USB_VBUS" pin_num="E9" pin_signal="PIO0_22/FC6_TXD_SCL_MISO_WS/UTICK_CAP1/CT_INP15/SCT0_OUT3/USB0_VBUS/SD1_D0/PLU_OUT7/SECURE_GPIO0_22"/>
+                  <pin peripheral="GPIO" signal="PIO0, 0" pin_num="L12" pin_signal="PIO0_0/FC3_SCK/CTIMER0_MAT0/SCT_GPI0/SD1_CARD_INT_N/SECURE_GPIO0_0/ACMP0_A">
+                     <pin_features>
+                        <pin_feature name="direction" value="INPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO1, 4" pin_num="B2" pin_signal="PIO1_4/FC0_SCK/SD0_D0/CTIMER2_MAT1/SCT0_OUT0/FREQME_GPIO_CLK_A">
+                     <pin_features>
+                        <pin_feature name="direction" value="INPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="FLEXCOMM1" signal="CTS_SDA_SSEL0" pin_num="C12" pin_signal="PIO0_13/FC1_CTS_SDA_SSEL0/UTICK_CAP0/CT_INP0/SCT_GPI0/FC1_RXD_SDA_MOSI_DATA/PLU_IN0/SECURE_GPIO0_13"/>
+                  <pin peripheral="FLEXCOMM1" signal="RTS_SCL_SSEL1" pin_num="C13" pin_signal="PIO0_14/FC1_RTS_SCL_SSEL1/UTICK_CAP1/CT_INP1/SCT_GPI1/FC1_TXD_SCL_MISO_WS/PLU_IN1/SECURE_GPIO0_14"/>
                </pins>
             </function>
          </functions_list>
@@ -633,6 +622,16 @@
                   <data type="Version">2.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_i2c" description="工具链/IDE工程中未找到FLEXCOMM I2C Driver。工程不会被编译！" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_i2c" description="工具链/IDE工程不支持FLEXCOMM I2C Driver版本。所需值: ${required_value}, 实际值: ${actual_value}. 工程可能没有被正确编译。" problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="greaterOrEqual">
+                  <data type="Version">2.0.1</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/peripherals.c" update_enabled="true"/>
@@ -737,6 +736,21 @@
                      </feature>
                   </dependency>
                   <dependency resourceType="ClockOutput" resourceId="UTICK_clock" description="UTICK_clock is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="frequency" evaluation="greaterThan">
+                        <data type="Frequency" unit="Hz">0</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM1.i2c_scl" description="Signal I2C serial clock of the peripheral FLEXCOMM1 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM1.i2c_sda" description="Signal I2C serial data of the peripheral FLEXCOMM1 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="ClockOutput" resourceId="FXCOM1_clock" description="FXCOM1 clock is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="frequency" evaluation="greaterThan">
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
@@ -1005,6 +1019,18 @@
                            <struct name="3"/>
                         </array>
                         <array name="interrupts"/>
+                     </config_set>
+                  </instance>
+                  <instance name="FLEXCOMM1" uuid="a7c4eed6-e66b-4f9b-968e-6c443ff99663" type="flexcomm_i2c" type_id="flexcomm_i2c_567d1a9d97c12e5d39b00259c3436dc4" mode="I2C_Polling" peripheral="FLEXCOMM1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="fsl_i2c">
+                        <setting name="i2c_mode" value="kI2C_Master"/>
+                        <setting name="clockSource" value="FXCOMFunctionClock"/>
+                        <setting name="clockSourceFreq" value="BOARD_BootClockRUN"/>
+                        <struct name="i2c_master_config">
+                           <setting name="enableMaster" value="true"/>
+                           <setting name="baudRate_Bps" value="100000"/>
+                           <setting name="enableTimeout" value="false"/>
+                        </struct>
                      </config_set>
                   </instance>
                </instances>

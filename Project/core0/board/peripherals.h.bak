@@ -75,8 +75,6 @@ extern "C" {
 #define PINT_PINT_1_IRQN PIN_INT1_IRQn
 /* Definition of PINT interrupt ID for interrupt 1  */
 #define PINT_INT_1 kPINT_PinInt1
-/* Definition of PINT interrupt ID for interrupt 2  */
-#define PINT_INT_2 kPINT_PinInt2
 /* Definition of peripheral ID */
 #define RTC_PERIPHERAL RTC
 /* BOARD_InitPeripherals defines for UTICK0 */
@@ -108,8 +106,6 @@ extern const spi_master_config_t FLEXCOMM6_config;
  **********************************************************************************************************************/
 /* INT_1 callback function for the PINT component */
 extern void PINT1_CallBack(pint_pin_int_t pintr ,uint32_t pmatch_status);
-/* INT_2 callback function for the PINT component */
-extern void PINT2_CallBack(pint_pin_int_t pintr ,uint32_t pmatch_status);
 /* UTICK0 callback function */
 extern void UTICK0_Callback(void);
 

@@ -136,7 +136,7 @@ void ADC_SampleStart(uint8_t reason)
 	vTaskDelay(1);//等待500ms
 	
 	//开始采集数据前获取一次温度
-	Temperature[g_sys_para.tempCount++] = TMP101_ReadTemp();
+	Temperature[g_sys_para.tempCount++] = MXL_ReadObjTemp();
 	//设置为true后,会在PIT中断中采集温度数据
 	g_sys_para.WorkStatus = true;
 	
@@ -169,7 +169,7 @@ void ADC_SampleStart(uint8_t reason)
 		spd_msg->len = 0;
 	}
 	//结束采集后获取一次温度
-	Temperature[g_sys_para.tempCount++] = TMP101_ReadTemp();
+	Temperature[g_sys_para.tempCount++] = MXL_ReadObjTemp();
     /* 触发ADC采样完成事件  */
     xTaskNotify(ADC_TaskHandle, EVT_SAMPLE_FINISH, eSetBits);
 }
@@ -215,8 +215,6 @@ void ADC_SampleStop(void)
     g_sample_para.ProcessMax = Temperature[max_i];
     g_sample_para.ProcessMin = Temperature[min_i];
     
-    LPC55S69_BatAdcUpdate();
-    
     //计算通过WIFI发送震动信号需要多少个包
     g_sys_para.shkPacksByWifiCat1 = (g_sample_para.shkCount / ADC_NUM_WIFI_CAT1) + (g_sample_para.shkCount % ADC_NUM_WIFI_CAT1 ? 1 : 0);
     
@@ -248,10 +246,11 @@ void ADC_AppTask(void)
 	PWR_5V_ON;
 	PWR_3V3A_ON;
 	
-	si5351aSetAdcClk0(1000000);//给ADS1271提供时钟
-	si5351aSetFilterClk1(1000000);//设置滤波器时钟
-
+	si5351aSetAdcClk0(1000000);//给ADS1271提供时钟, 测试点TP6
+	si5351aSetFilterClk1(1000000);//设置滤波器时钟, 测试点TP10
+	
 	while (1) { //wait ads1271 ready
+		Temperature[0] = MXL_ReadObjTemp();
         while(ADC_READY == 1){};//等待ADC_READY为低电平
 		ADC_ShakeValue = ADS1271_ReadData();
 		ADC_VoltageValue = ADC_ShakeValue * 2.048 / 0x800000;
@@ -265,10 +264,6 @@ void ADC_AppTask(void)
 #endif
 	
     DEBUG_PRINTF("ADC_AppTask Running\r\n");
-    
-    LPC55S69_AdcInit();
-	
-	TMP101_Init();
 	
     xTaskNotify(ADC_TaskHandle, EVT_SAMPLE_START, eSetBits);
     

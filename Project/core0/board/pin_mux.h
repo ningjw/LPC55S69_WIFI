@@ -29,8 +29,8 @@ void BOARD_InitBootPins(void);
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_0_DIGIMODE_DIGITAL 0x01u
 /*!
- * @brief Selects pin function.: Alternative connection 3. */
-#define PIO0_0_FUNC_ALT3 0x03u
+ * @brief Selects pin function.: Alternative connection 0. */
+#define PIO0_0_FUNC_ALT0 0x00u
 /*!
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_10_DIGIMODE_DIGITAL 0x01u
@@ -53,20 +53,14 @@ void BOARD_InitBootPins(void);
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_13_DIGIMODE_DIGITAL 0x01u
 /*!
- * @brief Selects pin function.: Alternative connection 0. */
-#define PIO0_13_FUNC_ALT0 0x00u
-/*!
- * @brief Selects function mode (on-chip pull-up/pull-down resistor control).: Pull-up. Pull-up resistor enabled. */
-#define PIO0_13_MODE_PULL_UP 0x02u
+ * @brief Selects pin function.: Alternative connection 1. */
+#define PIO0_13_FUNC_ALT1 0x01u
 /*!
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_14_DIGIMODE_DIGITAL 0x01u
 /*!
- * @brief Selects pin function.: Alternative connection 0. */
-#define PIO0_14_FUNC_ALT0 0x00u
-/*!
- * @brief Selects function mode (on-chip pull-up/pull-down resistor control).: Pull-up. Pull-up resistor enabled. */
-#define PIO0_14_MODE_PULL_UP 0x02u
+ * @brief Selects pin function.: Alternative connection 1. */
+#define PIO0_14_FUNC_ALT1 0x01u
 /*!
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_15_DIGIMODE_DIGITAL 0x01u
@@ -391,8 +385,8 @@ void BOARD_InitBootPins(void);
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO1_4_DIGIMODE_DIGITAL 0x01u
 /*!
- * @brief Selects pin function.: Alternative connection 3. */
-#define PIO1_4_FUNC_ALT3 0x03u
+ * @brief Selects pin function.: Alternative connection 0. */
+#define PIO1_4_FUNC_ALT0 0x00u
 /*!
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO1_6_DIGIMODE_DIGITAL 0x01u
@@ -733,28 +727,6 @@ void BOARD_InitBootPins(void);
 #define BOARD_TEMP_ALT_PIN_MASK (1U << 1U)      /*!<@brief PORT pin mask */
                                                 /* @} */
 
-/*! @name PIO0_14 (coord C13), TMP_SCL
-  @{ */
-
-/* Symbols to be used with GPIO driver */
-#define BOARD_TMP_SCL_GPIO GPIO                 /*!<@brief GPIO peripheral base pointer */
-#define BOARD_TMP_SCL_GPIO_PIN_MASK (1U << 14U) /*!<@brief GPIO pin mask */
-#define BOARD_TMP_SCL_PORT 0U                   /*!<@brief PORT peripheral base pointer */
-#define BOARD_TMP_SCL_PIN 14U                   /*!<@brief PORT pin number */
-#define BOARD_TMP_SCL_PIN_MASK (1U << 14U)      /*!<@brief PORT pin mask */
-                                                /* @} */
-
-/*! @name PIO0_13 (coord C12), TMP_SDA
-  @{ */
-
-/* Symbols to be used with GPIO driver */
-#define BOARD_TMP_SDA_GPIO GPIO                 /*!<@brief GPIO peripheral base pointer */
-#define BOARD_TMP_SDA_GPIO_PIN_MASK (1U << 13U) /*!<@brief GPIO pin mask */
-#define BOARD_TMP_SDA_PORT 0U                   /*!<@brief PORT peripheral base pointer */
-#define BOARD_TMP_SDA_PIN 13U                   /*!<@brief PORT pin number */
-#define BOARD_TMP_SDA_PIN_MASK (1U << 13U)      /*!<@brief PORT pin mask */
-                                                /* @} */
-
 /*! @name PIO1_13 (coord B3), FLASH_MOSI
   @{ */
 #define BOARD_FLASH_MOSI_PORT 1U                   /*!<@brief PORT peripheral base pointer */
@@ -848,20 +820,6 @@ void BOARD_InitBootPins(void);
 #define BOARD_FLASH_CS_PIN_MASK (1U << 15U)      /*!<@brief PORT pin mask */
                                                  /* @} */
 
-/*! @name PIO1_4 (coord B2), FLT_CLK
-  @{ */
-#define BOARD_FLT_CLK_PORT 1U                  /*!<@brief PORT peripheral base pointer */
-#define BOARD_FLT_CLK_PIN 4U                   /*!<@brief PORT pin number */
-#define BOARD_FLT_CLK_PIN_MASK (1U << 4U)      /*!<@brief PORT pin mask */
-                                               /* @} */
-
-/*! @name PIO0_0 (coord L12), ADC_CLK
-  @{ */
-#define BOARD_ADC_CLK_PORT 0U                  /*!<@brief PORT peripheral base pointer */
-#define BOARD_ADC_CLK_PIN 0U                   /*!<@brief PORT pin number */
-#define BOARD_ADC_CLK_PIN_MASK (1U << 0U)      /*!<@brief PORT pin mask */
-                                               /* @} */
-
 /*! @name PIO0_1 (coord F5), SPD_FREQ_CAP
   @{ */
 #define BOARD_SPD_FREQ_CAP_PORT 0U                  /*!<@brief PORT peripheral base pointer */
@@ -878,6 +836,28 @@ void BOARD_InitBootPins(void);
 #define BOARD_selFREQ_PORT 1U                  /*!<@brief PORT peripheral base pointer */
 #define BOARD_selFREQ_PIN 9U                   /*!<@brief PORT pin number */
 #define BOARD_selFREQ_PIN_MASK (1U << 9U)      /*!<@brief PORT pin mask */
+                                               /* @} */
+
+/*! @name PIO0_0 (coord L12), ADC_CLK
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_ADC_CLK_GPIO GPIO                /*!<@brief GPIO peripheral base pointer */
+#define BOARD_ADC_CLK_GPIO_PIN_MASK (1U << 0U) /*!<@brief GPIO pin mask */
+#define BOARD_ADC_CLK_PORT 0U                  /*!<@brief PORT peripheral base pointer */
+#define BOARD_ADC_CLK_PIN 0U                   /*!<@brief PORT pin number */
+#define BOARD_ADC_CLK_PIN_MASK (1U << 0U)      /*!<@brief PORT pin mask */
+                                               /* @} */
+
+/*! @name PIO1_4 (coord B2), FLT_CLK
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_FLT_CLK_GPIO GPIO                /*!<@brief GPIO peripheral base pointer */
+#define BOARD_FLT_CLK_GPIO_PIN_MASK (1U << 4U) /*!<@brief GPIO pin mask */
+#define BOARD_FLT_CLK_PORT 1U                  /*!<@brief PORT peripheral base pointer */
+#define BOARD_FLT_CLK_PIN 4U                   /*!<@brief PORT pin number */
+#define BOARD_FLT_CLK_PIN_MASK (1U << 4U)      /*!<@brief PORT pin mask */
                                                /* @} */
 
 /*!

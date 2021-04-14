@@ -129,8 +129,8 @@ static char * CheckSelf(void)
     LED_CheckSelf();
 
     //红外测温模块自检
-    g_sys_para.objTemp = TMP101_ReadTemp();
-
+    g_sys_para.objTemp = MXL_ReadObjTemp();
+	
     //震动传感器电压
     while (ADC_READY == 0);  //wait ads1271 ready
     voltageADS1271 = ADS1271_ReadData() * g_sys_flash_para.bias * 1.0f / 0x800000;
@@ -640,7 +640,7 @@ static char * StartUpgrade(cJSON *pJson, cJSON * pSub)
 static char * GetObjTemp(void)
 {
     //红外测温模块自检
-    g_sys_para.objTemp = TMP101_ReadTemp();
+    g_sys_para.objTemp = MXL_ReadObjTemp();
 
     cJSON *pJsonRoot = cJSON_CreateObject();
     if(NULL == pJsonRoot) {
@@ -1237,7 +1237,6 @@ uint32_t PacketSystemInfo(uint8_t *txBuf)
     if(NULL == pJsonRoot) {
         return len;
     }
-    LPC55S69_BatAdcUpdate();
     cJSON_AddNumberToObject(pJsonRoot, "Id", 23);
     cJSON_AddNumberToObject(pJsonRoot, "BatC", g_sys_para.batRemainPercent);
     cJSON_AddNumberToObject(pJsonRoot, "BatV", g_sys_para.batVoltage);

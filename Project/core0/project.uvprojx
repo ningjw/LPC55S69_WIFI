@@ -468,9 +468,9 @@
               <FilePath>.\Src\soft_iic_drv.c</FilePath>
             </File>
             <File>
-              <FileName>iic_tp100_drv.c</FileName>
+              <FileName>iic_temp_drv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Src\iic_tp100_drv.c</FilePath>
+              <FilePath>.\Src\iic_temp_drv.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -44,7 +44,7 @@
 #include "lpm_app.h"
 
 #include "battery_drv.h"
-#include "iic_tp100_drv.h"
+#include "iic_temp_drv.h"
 #include "si5351_drv.h"
 #include "adc_drv.h"
 #include "w25q128_drv.h"
@@ -126,9 +126,6 @@
 
 #define PWR_3V3A_ON               GPIO_PinWrite(GPIO, BOARD_PWR_3V3A_PORT, BOARD_PWR_3V3A_PIN, 1)
 #define PWR_3V3A_OFF              GPIO_PinWrite(GPIO, BOARD_PWR_3V3A_PORT, BOARD_PWR_3V3A_PIN, 0)
-
-#define PWR_CAT1_ON              GPIO_PinWrite(GPIO, BOARD_PWR_CAT1_PORT, BOARD_PWR_CAT1_PIN, 1)
-#define PWR_CAT1_OFF             GPIO_PinWrite(GPIO, BOARD_PWR_CAT1_PORT, BOARD_PWR_CAT1_PIN, 0)
 
 #define PWR_WIFI_ON              GPIO_PinWrite(GPIO, BOARD_BT_PWR_PORT, BOARD_BT_PWR_PIN, 1)
 #define PWR_WIFI_OFF             GPIO_PinWrite(GPIO, BOARD_BT_PWR_PORT, BOARD_BT_PWR_PIN, 0)

@@ -19,6 +19,7 @@
 #include "fsl_pint.h"
 #include "fsl_rtc.h"
 #include "fsl_utick.h"
+#include "fsl_i2c.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -90,6 +91,11 @@ extern "C" {
 #define UTICK0_TICKS 999999UL
 /* UTICK0 interrupt vector ID (number). */
 #define UTICK0_IRQN UTICK0_IRQn
+/* BOARD_InitPeripherals defines for FLEXCOMM1 */
+/* Definition of peripheral ID */
+#define FLEXCOMM1_PERIPHERAL ((I2C_Type *)FLEXCOMM1)
+/* Definition of the clock source frequency */
+#define FLEXCOMM1_CLOCK_SOURCE 12000000UL
 
 /***********************************************************************************************************************
  * Global variables
@@ -100,6 +106,7 @@ extern const spi_master_config_t FLEXCOMM0_config;
 extern const usart_config_t FLEXCOMM3_config;
 extern const usart_config_t FLEXCOMM5_config;
 extern const spi_master_config_t FLEXCOMM6_config;
+extern const i2c_master_config_t FLEXCOMM1_config;
 
 /***********************************************************************************************************************
  * Callback functions
