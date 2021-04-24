@@ -19,6 +19,7 @@
 #include "fsl_pint.h"
 #include "fsl_rtc.h"
 #include "fsl_utick.h"
+#include "fsl_i2c.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -48,14 +49,6 @@ extern "C" {
 /* Definition of the clock source frequency */
 #define FLEXCOMM0_CLOCK_SOURCE 48000000UL
 /* Definition of peripheral ID */
-#define FLEXCOMM3_PERIPHERAL ((USART_Type *)FLEXCOMM3)
-/* Definition of the clock source frequency */
-#define FLEXCOMM3_CLOCK_SOURCE 12000000UL
-/* FLEXCOMM3 interrupt vector ID (number). */
-#define FLEXCOMM3_FLEXCOMM_IRQN FLEXCOMM3_IRQn
-/* FLEXCOMM3 interrupt handler identifier. */
-#define FLEXCOMM3_FLEXCOMM_IRQHANDLER FLEXCOMM3_IRQHandler
-/* Definition of peripheral ID */
 #define FLEXCOMM5_PERIPHERAL ((USART_Type *)FLEXCOMM5)
 /* Definition of the clock source frequency */
 #define FLEXCOMM5_CLOCK_SOURCE 12000000UL
@@ -72,9 +65,9 @@ extern "C" {
 /* Definition of peripheral ID */
 #define PINT_PERIPHERAL ((PINT_Type *) PINT_BASE)
 /* PINT interrupt vector ID (number). */
-#define PINT_PINT_1_IRQN PIN_INT1_IRQn
-/* Definition of PINT interrupt ID for interrupt 1  */
-#define PINT_INT_1 kPINT_PinInt1
+#define PINT_PINT_2_IRQN PIN_INT2_IRQn
+/* Definition of PINT interrupt ID for interrupt 2  */
+#define PINT_INT_1 kPINT_PinInt2
 /* Definition of peripheral ID */
 #define RTC_PERIPHERAL RTC
 /* BOARD_InitPeripherals defines for UTICK0 */
@@ -90,6 +83,19 @@ extern "C" {
 #define UTICK0_TICKS 999999UL
 /* UTICK0 interrupt vector ID (number). */
 #define UTICK0_IRQN UTICK0_IRQn
+/* BOARD_InitPeripherals defines for FLEXCOMM1 */
+/* Definition of peripheral ID */
+#define FLEXCOMM1_PERIPHERAL ((I2C_Type *)FLEXCOMM1)
+/* Definition of the clock source frequency */
+#define FLEXCOMM1_CLOCK_SOURCE 12000000UL
+/* Definition of peripheral ID */
+#define FLEXCOMM2_PERIPHERAL ((USART_Type *)FLEXCOMM2)
+/* Definition of the clock source frequency */
+#define FLEXCOMM2_CLOCK_SOURCE 12000000UL
+/* FLEXCOMM2 interrupt vector ID (number). */
+#define FLEXCOMM2_FLEXCOMM_IRQN FLEXCOMM2_IRQn
+/* FLEXCOMM2 interrupt handler identifier. */
+#define FLEXCOMM2_FLEXCOMM_IRQHANDLER FLEXCOMM2_IRQHandler
 
 /***********************************************************************************************************************
  * Global variables
@@ -97,9 +103,10 @@ extern "C" {
 extern dma_handle_t DMA0_CH0_Handle;
 extern const ctimer_config_t CTIMER3_config;
 extern const spi_master_config_t FLEXCOMM0_config;
-extern const usart_config_t FLEXCOMM3_config;
 extern const usart_config_t FLEXCOMM5_config;
 extern const spi_master_config_t FLEXCOMM6_config;
+extern const i2c_master_config_t FLEXCOMM1_config;
+extern const usart_config_t FLEXCOMM2_config;
 
 /***********************************************************************************************************************
  * Callback functions

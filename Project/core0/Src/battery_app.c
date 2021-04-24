@@ -5,7 +5,7 @@
 #define READ_CHARGE_STA    GPIO_PinRead(GPIO, BOARD_BAT_CHRG_PORT, BOARD_BAT_CHRG_PIN)
 #define READ_STDBY_STA     GPIO_PinRead(GPIO, BOARD_BAT_STDBY_PORT,BOARD_BAT_STDBY_PIN)
 
-#if defined( WIFI_VERSION) || defined(BLE_VERSION)
+
 /***********************************************************************
   * @ 函数名  ： BAT_AppTask
   * @ 功能说明：
@@ -95,5 +95,4 @@ void BAT_AppTask(void)
         vTaskDelay(2000);
 	}
 }
-#endif
 

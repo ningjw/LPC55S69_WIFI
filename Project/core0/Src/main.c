@@ -98,10 +98,10 @@ void main(void)
   * @input   
   * @return  
 ***************************************************************************************/
-void PINT1_CallBack(pint_pin_int_t pintr, uint32_t pmatch_status)
+void PINT_CallBack(pint_pin_int_t pintr, uint32_t pmatch_status)
 {
 	//nLink低电平表示WIFI已连接
-	if(GPIO_PinRead(GPIO, BOARD_BT_STATUS_PORT, BOARD_BT_STATUS_PIN) == 0)
+	if(GPIO_PinRead(GPIO, BOARD_WIFI_nLink_PORT, BOARD_WIFI_nLink_PIN) == 0)
 	{
 		g_sys_para.BleWifiLedStatus = BLE_WIFI_CONNECT;
 	}else{

@@ -49,14 +49,6 @@ extern "C" {
 /* Definition of the clock source frequency */
 #define FLEXCOMM0_CLOCK_SOURCE 48000000UL
 /* Definition of peripheral ID */
-#define FLEXCOMM3_PERIPHERAL ((USART_Type *)FLEXCOMM3)
-/* Definition of the clock source frequency */
-#define FLEXCOMM3_CLOCK_SOURCE 12000000UL
-/* FLEXCOMM3 interrupt vector ID (number). */
-#define FLEXCOMM3_FLEXCOMM_IRQN FLEXCOMM3_IRQn
-/* FLEXCOMM3 interrupt handler identifier. */
-#define FLEXCOMM3_FLEXCOMM_IRQHANDLER FLEXCOMM3_IRQHandler
-/* Definition of peripheral ID */
 #define FLEXCOMM5_PERIPHERAL ((USART_Type *)FLEXCOMM5)
 /* Definition of the clock source frequency */
 #define FLEXCOMM5_CLOCK_SOURCE 12000000UL
@@ -73,9 +65,9 @@ extern "C" {
 /* Definition of peripheral ID */
 #define PINT_PERIPHERAL ((PINT_Type *) PINT_BASE)
 /* PINT interrupt vector ID (number). */
-#define PINT_PINT_1_IRQN PIN_INT1_IRQn
-/* Definition of PINT interrupt ID for interrupt 1  */
-#define PINT_INT_1 kPINT_PinInt1
+#define PINT_PINT_2_IRQN PIN_INT2_IRQn
+/* Definition of PINT interrupt ID for interrupt 2  */
+#define PINT_INT2 kPINT_PinInt2
 /* Definition of peripheral ID */
 #define RTC_PERIPHERAL RTC
 /* BOARD_InitPeripherals defines for UTICK0 */
@@ -96,6 +88,14 @@ extern "C" {
 #define FLEXCOMM1_PERIPHERAL ((I2C_Type *)FLEXCOMM1)
 /* Definition of the clock source frequency */
 #define FLEXCOMM1_CLOCK_SOURCE 12000000UL
+/* Definition of peripheral ID */
+#define FLEXCOMM2_PERIPHERAL ((USART_Type *)FLEXCOMM2)
+/* Definition of the clock source frequency */
+#define FLEXCOMM2_CLOCK_SOURCE 12000000UL
+/* FLEXCOMM2 interrupt vector ID (number). */
+#define FLEXCOMM2_FLEXCOMM_IRQN FLEXCOMM2_IRQn
+/* FLEXCOMM2 interrupt handler identifier. */
+#define FLEXCOMM2_FLEXCOMM_IRQHANDLER FLEXCOMM2_IRQHandler
 
 /***********************************************************************************************************************
  * Global variables
@@ -103,16 +103,16 @@ extern "C" {
 extern dma_handle_t DMA0_CH0_Handle;
 extern const ctimer_config_t CTIMER3_config;
 extern const spi_master_config_t FLEXCOMM0_config;
-extern const usart_config_t FLEXCOMM3_config;
 extern const usart_config_t FLEXCOMM5_config;
 extern const spi_master_config_t FLEXCOMM6_config;
 extern const i2c_master_config_t FLEXCOMM1_config;
+extern const usart_config_t FLEXCOMM2_config;
 
 /***********************************************************************************************************************
  * Callback functions
  **********************************************************************************************************************/
-/* INT_1 callback function for the PINT component */
-extern void PINT1_CallBack(pint_pin_int_t pintr ,uint32_t pmatch_status);
+/* INT2 callback function for the PINT component */
+extern void PINT_CallBack(pint_pin_int_t pintr ,uint32_t pmatch_status);
 /* UTICK0 callback function */
 extern void UTICK0_Callback(void);
 

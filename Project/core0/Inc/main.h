@@ -38,9 +38,7 @@
 #include "adc_app.h"
 #include "flash_app.h"
 #include "battery_app.h"
-#include "cat1_app.h"
 #include "core1_app.h"
-#include "nfc_app.h"
 #include "lpm_app.h"
 
 #include "battery_drv.h"
@@ -49,14 +47,6 @@
 #include "adc_drv.h"
 #include "w25q128_drv.h"
 #include "soft_iic_drv.h"
-
-#define VERSION_CONTROL 2
-
-#if VERSION_CONTROL == 1
-#define BLE_VERSION
-#elif VERSION_CONTROL == 2
-#define WIFI_VERSION
-#endif
 
 #define EVT_UART_OK        (1<<0) //串口接受'}'等特殊字符,判断为接受到一包完整的json数据,发送该事件
 #define EVT_UART_TIMTOUT   (1<<1) //串口接受超时, 用于判断是否接受到一个帧数据,发送事件通知线程

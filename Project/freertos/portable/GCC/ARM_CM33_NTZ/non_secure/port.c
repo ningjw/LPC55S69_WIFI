@@ -509,8 +509,8 @@ void vPortExitCritical( void ) /* PRIVILEGED_FUNCTION */
 void SysTick_Handler( void ) /* PRIVILEGED_FUNCTION */
 {
 	uint32_t ulPreviousMask;
-	extern void FLEXCOMM3_TimeTick(void);
-	FLEXCOMM3_TimeTick();
+	extern void FLEXCOMM2_TimeTick(void);
+	FLEXCOMM2_TimeTick();
 	
 	ulPreviousMask = portSET_INTERRUPT_MASK_FROM_ISR();
 	{

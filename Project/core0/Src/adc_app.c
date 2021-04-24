@@ -225,7 +225,7 @@ void ADC_SampleStop(void)
     g_sys_para.sampPacksByWifiCat1 = g_sys_para.shkPacksByWifiCat1 + g_sys_para.spdPacksByWifiCat1 + 1;//wifi需要加上1个采样参数包
     
     //转速信号从哪个sid开始发送
-    g_sys_para.spdStartSid = g_sys_para.shkPacksByBleNfc + 1;//需要加上1个采样参数包
+    g_sys_para.spdStartSid = g_sys_para.shkPacksByWifiCat1 + 1;//需要加上1个采样参数包
 }
 
 
@@ -265,7 +265,7 @@ void ADC_AppTask(void)
 	
     DEBUG_PRINTF("ADC_AppTask Running\r\n");
 	
-    xTaskNotify(ADC_TaskHandle, EVT_SAMPLE_START, eSetBits);
+//    xTaskNotify(ADC_TaskHandle, EVT_SAMPLE_START, eSetBits);
     
     while(1)
     {
@@ -286,6 +286,7 @@ void ADC_AppTask(void)
 		else if(r_event & EVT_SAMPLE_FINISH) 
 		{
             ADC_SampleStop();
+			W25Q128_AddAdcData();
 			/* ---------------将震动信号转换-----------------------*/
 #if 0
 			float tempValue = 0;

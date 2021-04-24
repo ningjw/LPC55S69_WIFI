@@ -52,7 +52,7 @@
                <pin_label pin_num="G9" pin_signal="PIO1_18/SD1_POW_EN/SCT0_OUT5/PLU_OUT0" label="KEY_WAKE" identifier="KEY_WAKE"/>
                <pin_label pin_num="A11" pin_signal="PIO0_25/FC0_TXD_SCL_MISO_WS/SD0_D1/CT_INP9/SCT_GPI1/SECURE_GPIO0_25" label="PWR_5V" identifier="PWR_5V"/>
                <pin_label pin_num="F9" pin_signal="PIO1_30/FC7_TXD_SCL_MISO_WS/SD0_D7/SCT_GPI7/USB1_OVERCURRENTN/USB1_LEDN/PLU_IN1" label="BT_STATUS" identifier="BT_STATUS"/>
-               <pin_label pin_num="B11" pin_signal="PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2" label="BT_TXD" identifier="BT_TXD"/>
+               <pin_label pin_num="B11" pin_signal="PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2" label="PWR_BT" identifier="BT_TXD;PWR_BT"/>
                <pin_label pin_num="F8" pin_signal="PIO0_3/FC3_RXD_SDA_MOSI_DATA/CTIMER0_MAT1/SCT0_OUT1/SCT_GPI3/SECURE_GPIO0_3" label="BT_RXD" identifier="BT_RXD"/>
                <pin_label pin_num="A7" pin_signal="PIO0_5/FC4_RXD_SDA_MOSI_DATA/CTIMER3_MAT0/SCT_GPI5/FC3_RTS_SCL_SSEL1/MCLK/SECURE_GPIO0_5" label="WIFI_CTS" identifier="BT_RTS;WIFI_CTS"/>
                <pin_label pin_num="E7" pin_signal="PIO0_4/FC4_SCK/CT_INP12/SCT_GPI4/FC3_CTS_SDA_SSEL0/SECURE_GPIO0_4" label="WIFI_RTS" identifier="BT_CTS;BT_RTS;FC3_CTS;WIFI_CTS;WIFI_RTS"/>
@@ -61,8 +61,8 @@
                <pin_label pin_num="E12" pin_signal="PIO0_24/FC0_RXD_SDA_MOSI_DATA/SD0_D0/CT_INP8/SCT_GPI0/SECURE_GPIO0_24" label="PWR_OFF" identifier="PWR_OFF"/>
                <pin_label pin_num="E6" pin_signal="PIO0_19/FC4_RTS_SCL_SSEL1/UTICK_CAP0/CTIMER0_MAT2/SCT0_OUT2/FC7_TXD_SCL_MISO_WS/PLU_IN4/SECURE_GPIO0_19" label="LED_BLE_GREEN" identifier="LED_BLE_RED;LED_BLE_GREEN"/>
                <pin_label pin_num="B12" pin_signal="PIO0_20/FC3_CTS_SDA_SSEL0/CTIMER1_MAT1/CT_INP15/SCT_GPI2/FC7_RXD_SDA_MOSI_DATA/HS_SPI_SSEL0/PLU_IN5/SECURE_GPIO0_20/FC4_TXD_SCL_MISO_WS" label="LED_BLE_RED" identifier="LED_BLE_GREEN;LED_BLE_RED"/>
-               <pin_label pin_num="H9" pin_signal="PIO0_18/FC4_CTS_SDA_SSEL0/SD0_WR_PRT/CTIMER1_MAT0/SCT0_OUT1/PLU_IN3/SECURE_GPIO0_18/ACMP0_C" label="NB_RELOAD" identifier="NB_RELOAD"/>
-               <pin_label pin_num="H8" pin_signal="PIO0_29/FC0_RXD_SDA_MOSI_DATA/SD1_D2/CTIMER2_MAT3/SCT0_OUT8/CMP0_OUT/PLU_OUT2/SECURE_GPIO0_29" label="NB_NETSTATUS" identifier="NB_ST;NB_NETSTATUS"/>
+               <pin_label pin_num="H9" pin_signal="PIO0_18/FC4_CTS_SDA_SSEL0/SD0_WR_PRT/CTIMER1_MAT0/SCT0_OUT1/PLU_IN3/SECURE_GPIO0_18/ACMP0_C" label="WIFI_RELOAD" identifier="NB_RELOAD;WIFI_RELOAD"/>
+               <pin_label pin_num="H8" pin_signal="PIO0_29/FC0_RXD_SDA_MOSI_DATA/SD1_D2/CTIMER2_MAT3/SCT0_OUT8/CMP0_OUT/PLU_OUT2/SECURE_GPIO0_29" label="WIFI_nLink" identifier="NB_ST;NB_NETSTATUS;WIFI_nLink"/>
                <pin_label pin_num="B2" pin_signal="PIO1_4/FC0_SCK/SD0_D0/CTIMER2_MAT1/SCT0_OUT0/FREQME_GPIO_CLK_A" label="FLT_CLK" identifier="FLT_CLK"/>
                <pin_label pin_num="F5" pin_signal="PIO0_1/FC3_CTS_SDA_SSEL0/CT_INP0/SCT_GPI1/SD1_CLK/CMP0_OUT/SECURE_GPIO0_1" label="SPD_FREQ_CAP" identifier="FREQ_CAP;SPD_FREQ_CAP"/>
                <pin_label pin_num="A12" pin_signal="PIO0_21/FC3_RTS_SCL_SSEL1/UTICK_CAP3/CTIMER3_MAT3/SCT_GPI3/FC7_SCK/PLU_CLKIN/SECURE_GPIO0_21" label="ADC_RDY" identifier="ADC_RDY"/>
@@ -89,11 +89,6 @@
                </options>
                <dependencies>
                   <dependency resourceType="Peripheral" resourceId="PINT" description="Peripheral PINT is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
-                     <feature name="initialized" evaluation="equal">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="Peripheral" resourceId="FLEXCOMM3" description="Peripheral FLEXCOMM3 is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
                      <feature name="initialized" evaluation="equal">
                         <data>true</data>
                      </feature>
@@ -240,8 +235,6 @@
                         <pin_feature name="gpio_init_state" value="true"/>
                      </pin_features>
                   </pin>
-                  <pin peripheral="FLEXCOMM3" signal="TXD_SCL_MISO_WS" pin_num="B11" pin_signal="PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2"/>
-                  <pin peripheral="FLEXCOMM3" signal="RXD_SDA_MOSI_DATA" pin_num="F8" pin_signal="PIO0_3/FC3_RXD_SDA_MOSI_DATA/CTIMER0_MAT1/SCT0_OUT1/SCT_GPI3/SECURE_GPIO0_3"/>
                   <pin peripheral="GPIO" signal="PIO1, 19" pin_num="H13" pin_signal="PIO1_19/SCT0_OUT7/CTIMER3_MAT1/SCT_GPI7/FC4_SCK/PLU_OUT1/ACMPVREF">
                      <pin_features>
                         <pin_feature name="identifier" value="PWR_NB"/>
@@ -252,13 +245,14 @@
                   </pin>
                   <pin peripheral="GPIO" signal="PIO0, 18" pin_num="H9" pin_signal="PIO0_18/FC4_CTS_SDA_SSEL0/SD0_WR_PRT/CTIMER1_MAT0/SCT0_OUT1/PLU_IN3/SECURE_GPIO0_18/ACMP0_C">
                      <pin_features>
+                        <pin_feature name="identifier" value="WIFI_RELOAD"/>
                         <pin_feature name="direction" value="OUTPUT"/>
                         <pin_feature name="gpio_init_state" value="true"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="PINT" signal="PINT, 2" pin_num="H8" pin_signal="PIO0_29/FC0_RXD_SDA_MOSI_DATA/SD1_D2/CTIMER2_MAT3/SCT0_OUT8/CMP0_OUT/PLU_OUT2/SECURE_GPIO0_29">
                      <pin_features>
-                        <pin_feature name="identifier" value="NB_NETSTATUS"/>
+                        <pin_feature name="identifier" value="WIFI_nLink"/>
                         <pin_feature name="direction" value="INPUT"/>
                      </pin_features>
                   </pin>
@@ -421,6 +415,13 @@
                   </pin>
                   <pin peripheral="FLEXCOMM1" signal="CTS_SDA_SSEL0" pin_num="C12" pin_signal="PIO0_13/FC1_CTS_SDA_SSEL0/UTICK_CAP0/CT_INP0/SCT_GPI0/FC1_RXD_SDA_MOSI_DATA/PLU_IN0/SECURE_GPIO0_13"/>
                   <pin peripheral="FLEXCOMM1" signal="RTS_SCL_SSEL1" pin_num="C13" pin_signal="PIO0_14/FC1_RTS_SCL_SSEL1/UTICK_CAP1/CT_INP1/SCT_GPI1/FC1_TXD_SCL_MISO_WS/PLU_IN1/SECURE_GPIO0_14"/>
+                  <pin peripheral="GPIO" signal="PIO0, 2" pin_num="B11" pin_signal="PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2">
+                     <pin_features>
+                        <pin_feature name="identifier" value="PWR_BT"/>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="gpio_init_state" value="true"/>
+                     </pin_features>
+                  </pin>
                </pins>
             </function>
          </functions_list>
@@ -675,21 +676,6 @@
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="FXCOM3_clock" description="FXCOM3 clock is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM3.usart_rxd" description="Signal RX of the peripheral FLEXCOMM3 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM3.usart_txd" description="Signal TX of the peripheral FLEXCOMM3 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
                   <dependency resourceType="ClockOutput" resourceId="FXCOM5_clock" description="FXCOM5 clock is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="frequency" evaluation="greaterThan">
                         <data type="Frequency" unit="Hz">0</data>
@@ -730,7 +716,7 @@
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="PINT.pint.1" description="Signal PINT, 1 of the peripheral PINT is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="PINT.pint.2" description="Signal PINT, 2 of the peripheral PINT is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
                      </feature>
@@ -753,6 +739,21 @@
                   <dependency resourceType="ClockOutput" resourceId="FXCOM1_clock" description="FXCOM1 clock is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="frequency" evaluation="greaterThan">
                         <data type="Frequency" unit="Hz">0</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="ClockOutput" resourceId="FXCOM2_clock" description="FXCOM2 clock is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="frequency" evaluation="greaterThan">
+                        <data type="Frequency" unit="Hz">0</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM2.usart_rxd" description="Signal RX of the peripheral FLEXCOMM2 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM2.usart_txd" description="Signal TX of the peripheral FLEXCOMM2 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="equal">
+                        <data type="Boolean">true</data>
                      </feature>
                   </dependency>
                </dependencies>
@@ -844,44 +845,6 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="FLEXCOMM3" uuid="70940862-4305-4f25-b532-aa45cb5cb6bd" type="flexcomm_usart" type_id="flexcomm_usart_c0a0c6d3d3ef57701b439b00070052a8" mode="interrupts" peripheral="FLEXCOMM3" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="interruptsCfg">
-                        <set name="interrupts">
-                           <selected>
-                              <id>kUSART_RxErrorInterruptEnable</id>
-                              <id>kUSART_RxLevelInterruptEnable</id>
-                           </selected>
-                        </set>
-                        <struct name="interrupt_vectors">
-                           <setting name="enable_rx_tx_irq" value="true"/>
-                           <struct name="interrupt_rx_tx">
-                              <setting name="IRQn" value="FLEXCOMM3_IRQn"/>
-                              <setting name="enable_interrrupt" value="enabled"/>
-                              <setting name="enable_priority" value="false"/>
-                              <setting name="priority" value="0"/>
-                              <setting name="enable_custom_name" value="false"/>
-                           </struct>
-                        </struct>
-                     </config_set>
-                     <config_set name="usartConfig_t">
-                        <struct name="usartConfig">
-                           <setting name="clockSource" value="FXCOMFunctionClock"/>
-                           <setting name="clockSourceFreq" value="BOARD_BootClockRUN"/>
-                           <setting name="baudRate_Bps" value="115200"/>
-                           <setting name="syncMode" value="kUSART_SyncModeDisabled"/>
-                           <setting name="parityMode" value="kUSART_ParityDisabled"/>
-                           <setting name="stopBitCount" value="kUSART_OneStopBit"/>
-                           <setting name="bitCountPerChar" value="kUSART_8BitsPerChar"/>
-                           <setting name="loopback" value="false"/>
-                           <setting name="txWatermark" value="kUSART_TxFifo0"/>
-                           <setting name="rxWatermark" value="kUSART_RxFifo1"/>
-                           <setting name="enableRx" value="true"/>
-                           <setting name="enableTx" value="true"/>
-                           <setting name="clockPolarity" value="kUSART_RxSampleOnFallingEdge"/>
-                           <setting name="enableContinuousSCLK" value="false"/>
-                        </struct>
-                     </config_set>
-                  </instance>
                   <instance name="FLEXCOMM5" uuid="bb5d7c81-7f6c-47f3-ad40-64eedefa12e3" type="flexcomm_usart" type_id="flexcomm_usart_c0a0c6d3d3ef57701b439b00070052a8" mode="interrupts" peripheral="FLEXCOMM5" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="interruptsCfg">
                         <set name="interrupts">
@@ -952,13 +915,13 @@
                      <config_set name="general">
                         <array name="interrupt_array">
                            <struct name="0">
-                              <setting name="interrupt_id" value="INT_1"/>
-                              <setting name="interrupt_selection" value="PINT.1"/>
+                              <setting name="interrupt_id" value="INT2"/>
+                              <setting name="interrupt_selection" value="PINT.2"/>
                               <setting name="interrupt_type" value="kPINT_PinIntEnableBothEdges"/>
-                              <setting name="callback_function" value="PINT1_CallBack"/>
+                              <setting name="callback_function" value="PINT_CallBack"/>
                               <setting name="enable_callback" value="true"/>
                               <struct name="interrupt">
-                                 <setting name="IRQn" value="PIN_INT1_IRQn"/>
+                                 <setting name="IRQn" value="PIN_INT2_IRQn"/>
                                  <setting name="enable_priority" value="false"/>
                                  <setting name="priority" value="0"/>
                               </struct>
@@ -1030,6 +993,44 @@
                            <setting name="enableMaster" value="true"/>
                            <setting name="baudRate_Bps" value="100000"/>
                            <setting name="enableTimeout" value="false"/>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="FLEXCOMM2" uuid="220b1d35-d9c0-426a-8630-ef20275d2f8b" type="flexcomm_usart" type_id="flexcomm_usart_c0a0c6d3d3ef57701b439b00070052a8" mode="interrupts" peripheral="FLEXCOMM2" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="interruptsCfg">
+                        <set name="interrupts">
+                           <selected>
+                              <id>kUSART_RxErrorInterruptEnable</id>
+                              <id>kUSART_RxLevelInterruptEnable</id>
+                           </selected>
+                        </set>
+                        <struct name="interrupt_vectors">
+                           <setting name="enable_rx_tx_irq" value="true"/>
+                           <struct name="interrupt_rx_tx">
+                              <setting name="IRQn" value="FLEXCOMM2_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                        </struct>
+                     </config_set>
+                     <config_set name="usartConfig_t" quick_selection="QuickSelection1">
+                        <struct name="usartConfig">
+                           <setting name="clockSource" value="FXCOMFunctionClock"/>
+                           <setting name="clockSourceFreq" value="BOARD_BootClockRUN"/>
+                           <setting name="baudRate_Bps" value="115200"/>
+                           <setting name="syncMode" value="kUSART_SyncModeDisabled"/>
+                           <setting name="parityMode" value="kUSART_ParityDisabled"/>
+                           <setting name="stopBitCount" value="kUSART_OneStopBit"/>
+                           <setting name="bitCountPerChar" value="kUSART_8BitsPerChar"/>
+                           <setting name="loopback" value="false"/>
+                           <setting name="txWatermark" value="kUSART_TxFifo0"/>
+                           <setting name="rxWatermark" value="kUSART_RxFifo1"/>
+                           <setting name="enableRx" value="true"/>
+                           <setting name="enableTx" value="true"/>
+                           <setting name="clockPolarity" value="kUSART_RxSampleOnFallingEdge"/>
+                           <setting name="enableContinuousSCLK" value="false"/>
                         </struct>
                      </config_set>
                   </instance>

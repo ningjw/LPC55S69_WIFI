@@ -220,7 +220,7 @@ static char * SetSysPara(cJSON *pJson, cJSON * pSub)
     return p_reply;
 }
 
-/***************************************************************************************
+/**********************7*****************************************************************
   * @brief   处理消息id为7的消息, 该消息为采集参数设置
   * @input
   * @return
@@ -364,7 +364,7 @@ static char * SetSamplePara(cJSON *pJson, cJSON * pSub)
     return p_reply;
 }
 
-/***************************************************************************************
+/**********************8*****************************************************************
   * @brief   处理消息id为8的消息, 该消息为开始采样信号
   * @input
   * @return
@@ -386,14 +386,14 @@ static char * StartSample(cJSON *pJson, cJSON * pSub)
     char *sendBuf = cJSON_PrintUnformatted(pJsonReply);
     cJSON_Delete(pJsonReply);
 
-    FLEXCOMM3_SendStr((char *)sendBuf);
+    WIFI_SendStr((char *)sendBuf);
 	
     free(sendBuf);
     sendBuf = NULL;
 	
     /*start sample*/
     ADC_SampleStart(HAND_SAMPLE);
-
+	
     /*wait task notify*/
     ulTaskNotifyTake( pdTRUE, portMAX_DELAY );
 
@@ -553,14 +553,14 @@ SEND_DATA:
 	
 	if(sid <= 2)
     {
-		FLEXCOMM3_SendStr((char *)p_reply);
+		WIFI_SendStr((char *)p_reply);
 		cJSON_Delete(pJsonRoot);
 		free(p_reply);
 		p_reply = NULL;
 	}
     else
     {
-		USART_WriteBlocking(FLEXCOMM3_PERIPHERAL, g_commTxBuf, i);
+		USART_WriteBlocking(FLEXCOMM2_PERIPHERAL, g_commTxBuf, i);
 	}
 	
 	DEBUG_PRINTF("\r\nsid = %d ; len = %d\r\n",sid, i);
@@ -625,10 +625,8 @@ static char * StartUpgrade(cJSON *pJson, cJSON * pSub)
     cJSON_AddNumberToObject(pJsonRoot, "Sid", 0);
     char *p_reply = cJSON_PrintUnformatted(pJsonRoot);
     cJSON_Delete(pJsonRoot);
-#if defined( WIFI_VERSION) || defined(BLE_VERSION)
     g_sys_para.BleWifiLedStatus = BLE_WIFI_UPDATE;
-    g_flexcomm3StartRx = true;//开始超市检测,5s中未接受到数据则超时
-#endif
+    g_wifiStartRx = true;//开始超市检测,5s中未接受到数据则超时
     return p_reply;
 }
 
@@ -1098,12 +1096,12 @@ SEND_DATA:
 	printf("sid = %d\r\n",sid);
 	
 	if(sid == 0){
-		FLEXCOMM3_SendStr((char *)p_reply);
+		WIFI_SendStr((char *)p_reply);
 		cJSON_Delete(pJsonRoot);
 		free(p_reply);
 		p_reply = NULL;
 	}else{
-		USART_WriteBlocking(FLEXCOMM3_PERIPHERAL, g_commTxBuf, i);
+		USART_WriteBlocking(FLEXCOMM2_PERIPHERAL, g_commTxBuf, i);
 	}
 	
 	//获取所有的数据包
@@ -1402,7 +1400,7 @@ uint8_t*  ParseFirmPacket(uint8_t *pMsg)
     /* 当前为最后一包,计算整个固件的crc16码 */
     if(g_sys_flash_para.firmPacksCount == g_sys_flash_para.firmPacksTotal - 1) {
         g_sys_para.BleWifiLedStatus = BLE_WIFI_CONNECT;
-        g_flexcomm3StartRx = false;
+        g_wifiStartRx = false;
 
 //		printf("升级文件:\r\n");
 //

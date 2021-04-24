@@ -178,8 +178,8 @@ void BOARD_InitBootPins(void);
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_2_DIGIMODE_DIGITAL 0x01u
 /*!
- * @brief Selects pin function.: Alternative connection 1. */
-#define PIO0_2_FUNC_ALT1 0x01u
+ * @brief Selects pin function.: Alternative connection 0. */
+#define PIO0_2_FUNC_ALT0 0x00u
 /*!
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_30_DIGIMODE_DIGITAL 0x01u
@@ -209,12 +209,6 @@ void BOARD_InitBootPins(void);
 /*!
  * @brief Selects function mode (on-chip pull-up/pull-down resistor control).: Pull-up. Pull-up resistor enabled. */
 #define PIO0_31_MODE_PULL_UP 0x02u
-/*!
- * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
-#define PIO0_3_DIGIMODE_DIGITAL 0x01u
-/*!
- * @brief Selects pin function.: Alternative connection 1. */
-#define PIO0_3_FUNC_ALT1 0x01u
 /*!
  * @brief Select Digital mode.: Enable Digital mode. Digital input is enabled. */
 #define PIO0_4_DIGIMODE_DIGITAL 0x01u
@@ -574,20 +568,6 @@ void BOARD_InitBootPins(void);
 #define BOARD_BT_RST_PIN_MASK (1U << 25U)      /*!<@brief PORT pin mask */
                                                /* @} */
 
-/*! @name PIO0_2 (coord B11), BT_TXD
-  @{ */
-#define BOARD_BT_TXD_PORT 0U                  /*!<@brief PORT peripheral base pointer */
-#define BOARD_BT_TXD_PIN 2U                   /*!<@brief PORT pin number */
-#define BOARD_BT_TXD_PIN_MASK (1U << 2U)      /*!<@brief PORT pin mask */
-                                              /* @} */
-
-/*! @name PIO0_3 (coord F8), BT_RXD
-  @{ */
-#define BOARD_BT_RXD_PORT 0U                  /*!<@brief PORT peripheral base pointer */
-#define BOARD_BT_RXD_PIN 3U                   /*!<@brief PORT pin number */
-#define BOARD_BT_RXD_PIN_MASK (1U << 3U)      /*!<@brief PORT pin mask */
-                                              /* @} */
-
 /*! @name PIO1_19 (coord H13), PWR_NB
   @{ */
 
@@ -599,23 +579,23 @@ void BOARD_InitBootPins(void);
 #define BOARD_PWR_NB_PIN_MASK (1U << 19U)      /*!<@brief PORT pin mask */
                                                /* @} */
 
-/*! @name PIO0_18 (coord H9), NB_RELOAD
+/*! @name PIO0_18 (coord H9), WIFI_RELOAD
   @{ */
 
 /* Symbols to be used with GPIO driver */
-#define BOARD_NB_RELOAD_GPIO GPIO                 /*!<@brief GPIO peripheral base pointer */
-#define BOARD_NB_RELOAD_GPIO_PIN_MASK (1U << 18U) /*!<@brief GPIO pin mask */
-#define BOARD_NB_RELOAD_PORT 0U                   /*!<@brief PORT peripheral base pointer */
-#define BOARD_NB_RELOAD_PIN 18U                   /*!<@brief PORT pin number */
-#define BOARD_NB_RELOAD_PIN_MASK (1U << 18U)      /*!<@brief PORT pin mask */
-                                                  /* @} */
+#define BOARD_WIFI_RELOAD_GPIO GPIO                 /*!<@brief GPIO peripheral base pointer */
+#define BOARD_WIFI_RELOAD_GPIO_PIN_MASK (1U << 18U) /*!<@brief GPIO pin mask */
+#define BOARD_WIFI_RELOAD_PORT 0U                   /*!<@brief PORT peripheral base pointer */
+#define BOARD_WIFI_RELOAD_PIN 18U                   /*!<@brief PORT pin number */
+#define BOARD_WIFI_RELOAD_PIN_MASK (1U << 18U)      /*!<@brief PORT pin mask */
+                                                    /* @} */
 
-/*! @name PIO0_29 (coord H8), NB_NETSTATUS
+/*! @name PIO0_29 (coord H8), WIFI_nLink
   @{ */
-#define BOARD_NB_NETSTATUS_PORT 0U                   /*!<@brief PORT peripheral base pointer */
-#define BOARD_NB_NETSTATUS_PIN 29U                   /*!<@brief PORT pin number */
-#define BOARD_NB_NETSTATUS_PIN_MASK (1U << 29U)      /*!<@brief PORT pin mask */
-                                                     /* @} */
+#define BOARD_WIFI_nLink_PORT 0U                   /*!<@brief PORT peripheral base pointer */
+#define BOARD_WIFI_nLink_PIN 29U                   /*!<@brief PORT pin number */
+#define BOARD_WIFI_nLink_PIN_MASK (1U << 29U)      /*!<@brief PORT pin mask */
+                                                   /* @} */
 
 /*! @name PIO1_28 (coord A8), WIFI_nReset
   @{ */
@@ -859,6 +839,17 @@ void BOARD_InitBootPins(void);
 #define BOARD_FLT_CLK_PIN 4U                   /*!<@brief PORT pin number */
 #define BOARD_FLT_CLK_PIN_MASK (1U << 4U)      /*!<@brief PORT pin mask */
                                                /* @} */
+
+/*! @name PIO0_2 (coord B11), PWR_BT
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_PWR_BT_GPIO GPIO                /*!<@brief GPIO peripheral base pointer */
+#define BOARD_PWR_BT_GPIO_PIN_MASK (1U << 2U) /*!<@brief GPIO pin mask */
+#define BOARD_PWR_BT_PORT 0U                  /*!<@brief PORT peripheral base pointer */
+#define BOARD_PWR_BT_PIN 2U                   /*!<@brief PORT pin number */
+#define BOARD_PWR_BT_PIN_MASK (1U << 2U)      /*!<@brief PORT pin mask */
+                                              /* @} */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.

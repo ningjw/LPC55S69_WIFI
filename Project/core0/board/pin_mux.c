@@ -41,7 +41,7 @@ pin_labels:
 - {pin_num: G9, pin_signal: PIO1_18/SD1_POW_EN/SCT0_OUT5/PLU_OUT0, label: KEY_WAKE, identifier: KEY_WAKE}
 - {pin_num: A11, pin_signal: PIO0_25/FC0_TXD_SCL_MISO_WS/SD0_D1/CT_INP9/SCT_GPI1/SECURE_GPIO0_25, label: PWR_5V, identifier: PWR_5V}
 - {pin_num: F9, pin_signal: PIO1_30/FC7_TXD_SCL_MISO_WS/SD0_D7/SCT_GPI7/USB1_OVERCURRENTN/USB1_LEDN/PLU_IN1, label: BT_STATUS, identifier: BT_STATUS}
-- {pin_num: B11, pin_signal: PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2, label: BT_TXD, identifier: BT_TXD}
+- {pin_num: B11, pin_signal: PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2, label: PWR_BT, identifier: BT_TXD;PWR_BT}
 - {pin_num: F8, pin_signal: PIO0_3/FC3_RXD_SDA_MOSI_DATA/CTIMER0_MAT1/SCT0_OUT1/SCT_GPI3/SECURE_GPIO0_3, label: BT_RXD, identifier: BT_RXD}
 - {pin_num: A7, pin_signal: PIO0_5/FC4_RXD_SDA_MOSI_DATA/CTIMER3_MAT0/SCT_GPI5/FC3_RTS_SCL_SSEL1/MCLK/SECURE_GPIO0_5, label: WIFI_CTS, identifier: BT_RTS;WIFI_CTS}
 - {pin_num: E7, pin_signal: PIO0_4/FC4_SCK/CT_INP12/SCT_GPI4/FC3_CTS_SDA_SSEL0/SECURE_GPIO0_4, label: WIFI_RTS, identifier: BT_CTS;BT_RTS;FC3_CTS;WIFI_CTS;WIFI_RTS}
@@ -51,8 +51,8 @@ pin_labels:
 - {pin_num: E6, pin_signal: PIO0_19/FC4_RTS_SCL_SSEL1/UTICK_CAP0/CTIMER0_MAT2/SCT0_OUT2/FC7_TXD_SCL_MISO_WS/PLU_IN4/SECURE_GPIO0_19, label: LED_BLE_GREEN, identifier: LED_BLE_RED;LED_BLE_GREEN}
 - {pin_num: B12, pin_signal: PIO0_20/FC3_CTS_SDA_SSEL0/CTIMER1_MAT1/CT_INP15/SCT_GPI2/FC7_RXD_SDA_MOSI_DATA/HS_SPI_SSEL0/PLU_IN5/SECURE_GPIO0_20/FC4_TXD_SCL_MISO_WS,
   label: LED_BLE_RED, identifier: LED_BLE_GREEN;LED_BLE_RED}
-- {pin_num: H9, pin_signal: PIO0_18/FC4_CTS_SDA_SSEL0/SD0_WR_PRT/CTIMER1_MAT0/SCT0_OUT1/PLU_IN3/SECURE_GPIO0_18/ACMP0_C, label: NB_RELOAD, identifier: NB_RELOAD}
-- {pin_num: H8, pin_signal: PIO0_29/FC0_RXD_SDA_MOSI_DATA/SD1_D2/CTIMER2_MAT3/SCT0_OUT8/CMP0_OUT/PLU_OUT2/SECURE_GPIO0_29, label: NB_NETSTATUS, identifier: NB_ST;NB_NETSTATUS}
+- {pin_num: H9, pin_signal: PIO0_18/FC4_CTS_SDA_SSEL0/SD0_WR_PRT/CTIMER1_MAT0/SCT0_OUT1/PLU_IN3/SECURE_GPIO0_18/ACMP0_C, label: WIFI_RELOAD, identifier: NB_RELOAD;WIFI_RELOAD}
+- {pin_num: H8, pin_signal: PIO0_29/FC0_RXD_SDA_MOSI_DATA/SD1_D2/CTIMER2_MAT3/SCT0_OUT8/CMP0_OUT/PLU_OUT2/SECURE_GPIO0_29, label: WIFI_nLink, identifier: NB_ST;NB_NETSTATUS;WIFI_nLink}
 - {pin_num: B2, pin_signal: PIO1_4/FC0_SCK/SD0_D0/CTIMER2_MAT1/SCT0_OUT0/FREQME_GPIO_CLK_A, label: FLT_CLK, identifier: FLT_CLK}
 - {pin_num: F5, pin_signal: PIO0_1/FC3_CTS_SDA_SSEL0/CT_INP0/SCT_GPI1/SD1_CLK/CMP0_OUT/SECURE_GPIO0_1, label: SPD_FREQ_CAP, identifier: FREQ_CAP;SPD_FREQ_CAP}
 - {pin_num: A12, pin_signal: PIO0_21/FC3_RTS_SCL_SSEL1/UTICK_CAP3/CTIMER3_MAT3/SCT_GPI3/FC7_SCK/PLU_CLKIN/SECURE_GPIO0_21, label: ADC_RDY, identifier: ADC_RDY}
@@ -112,14 +112,12 @@ BOARD_InitPins:
   - {pin_num: F9, peripheral: PINT, signal: 'PINT, 1', pin_signal: PIO1_30/FC7_TXD_SCL_MISO_WS/SD0_D7/SCT_GPI7/USB1_OVERCURRENTN/USB1_LEDN/PLU_IN1, direction: INPUT}
   - {pin_num: E8, peripheral: GPIO, signal: 'PIO1, 27', pin_signal: PIO1_27/FC2_RTS_SCL_SSEL1/SD0_D4/CTIMER0_MAT3/CLKOUT/PLU_IN4, direction: OUTPUT}
   - {pin_num: B8, peripheral: GPIO, signal: 'PIO1, 25', pin_signal: PIO1_25/FC2_TXD_SCL_MISO_WS/SCT0_OUT2/SD1_D0/UTICK_CAP0/PLU_CLKIN, direction: OUTPUT, gpio_init_state: 'true'}
-  - {pin_num: B11, peripheral: FLEXCOMM3, signal: TXD_SCL_MISO_WS, pin_signal: PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2}
-  - {pin_num: F8, peripheral: FLEXCOMM3, signal: RXD_SDA_MOSI_DATA, pin_signal: PIO0_3/FC3_RXD_SDA_MOSI_DATA/CTIMER0_MAT1/SCT0_OUT1/SCT_GPI3/SECURE_GPIO0_3}
   - {pin_num: H13, peripheral: GPIO, signal: 'PIO1, 19', pin_signal: PIO1_19/SCT0_OUT7/CTIMER3_MAT1/SCT_GPI7/FC4_SCK/PLU_OUT1/ACMPVREF, identifier: PWR_NB, direction: OUTPUT,
     gpio_init_state: 'false', mode: inactive}
-  - {pin_num: H9, peripheral: GPIO, signal: 'PIO0, 18', pin_signal: PIO0_18/FC4_CTS_SDA_SSEL0/SD0_WR_PRT/CTIMER1_MAT0/SCT0_OUT1/PLU_IN3/SECURE_GPIO0_18/ACMP0_C, direction: OUTPUT,
-    gpio_init_state: 'true'}
+  - {pin_num: H9, peripheral: GPIO, signal: 'PIO0, 18', pin_signal: PIO0_18/FC4_CTS_SDA_SSEL0/SD0_WR_PRT/CTIMER1_MAT0/SCT0_OUT1/PLU_IN3/SECURE_GPIO0_18/ACMP0_C, identifier: WIFI_RELOAD,
+    direction: OUTPUT, gpio_init_state: 'true'}
   - {pin_num: H8, peripheral: PINT, signal: 'PINT, 2', pin_signal: PIO0_29/FC0_RXD_SDA_MOSI_DATA/SD1_D2/CTIMER2_MAT3/SCT0_OUT8/CMP0_OUT/PLU_OUT2/SECURE_GPIO0_29,
-    identifier: NB_NETSTATUS, direction: INPUT}
+    identifier: WIFI_nLink, direction: INPUT}
   - {pin_num: A8, peripheral: GPIO, signal: 'PIO1, 28', pin_signal: PIO1_28/FC7_SCK/SD0_D5/CT_INP2/PLU_IN3, identifier: WIFI_nReset, direction: OUTPUT, gpio_init_state: 'true'}
   - {pin_num: F2, peripheral: GPIO, signal: 'PIO0, 10', pin_signal: PIO0_10/FC6_SCK/CT_INP10/CTIMER2_MAT0/FC1_TXD_SCL_MISO_WS/SCT0_OUT2/SWO/SECURE_GPIO0_10/ADC0_1,
     identifier: ADC_FORMAT, direction: OUTPUT}
@@ -166,6 +164,8 @@ BOARD_InitPins:
   - {pin_num: B2, peripheral: GPIO, signal: 'PIO1, 4', pin_signal: PIO1_4/FC0_SCK/SD0_D0/CTIMER2_MAT1/SCT0_OUT0/FREQME_GPIO_CLK_A, direction: INPUT}
   - {pin_num: C12, peripheral: FLEXCOMM1, signal: CTS_SDA_SSEL0, pin_signal: PIO0_13/FC1_CTS_SDA_SSEL0/UTICK_CAP0/CT_INP0/SCT_GPI0/FC1_RXD_SDA_MOSI_DATA/PLU_IN0/SECURE_GPIO0_13}
   - {pin_num: C13, peripheral: FLEXCOMM1, signal: RTS_SCL_SSEL1, pin_signal: PIO0_14/FC1_RTS_SCL_SSEL1/UTICK_CAP1/CT_INP1/SCT_GPI1/FC1_TXD_SCL_MISO_WS/PLU_IN1/SECURE_GPIO0_14}
+  - {pin_num: B11, peripheral: GPIO, signal: 'PIO0, 2', pin_signal: PIO0_2/FC3_TXD_SCL_MISO_WS/CT_INP1/SCT0_OUT0/SCT_GPI2/SECURE_GPIO0_2, identifier: PWR_BT, direction: OUTPUT,
+    gpio_init_state: 'true'}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -196,6 +196,13 @@ void BOARD_InitPins(void)
     };
     /* Initialize GPIO functionality on pin PIO0_0 (pin L12)  */
     GPIO_PinInit(BOARD_ADC_CLK_GPIO, BOARD_ADC_CLK_PORT, BOARD_ADC_CLK_PIN, &ADC_CLK_config);
+
+    gpio_pin_config_t PWR_BT_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 1U
+    };
+    /* Initialize GPIO functionality on pin PIO0_2 (pin B11)  */
+    GPIO_PinInit(BOARD_PWR_BT_GPIO, BOARD_PWR_BT_PORT, BOARD_PWR_BT_PIN, &PWR_BT_config);
 
     gpio_pin_config_t WIFI_RTS_config = {
         .pinDirection = kGPIO_DigitalOutput,
@@ -239,12 +246,12 @@ void BOARD_InitPins(void)
     /* Initialize GPIO functionality on pin PIO0_17 (pin G3)  */
     GPIO_PinInit(BOARD_BAT_STDBY_GPIO, BOARD_BAT_STDBY_PORT, BOARD_BAT_STDBY_PIN, &BAT_STDBY_config);
 
-    gpio_pin_config_t NB_RELOAD_config = {
+    gpio_pin_config_t WIFI_RELOAD_config = {
         .pinDirection = kGPIO_DigitalOutput,
         .outputLogic = 1U
     };
     /* Initialize GPIO functionality on pin PIO0_18 (pin H9)  */
-    GPIO_PinInit(BOARD_NB_RELOAD_GPIO, BOARD_NB_RELOAD_PORT, BOARD_NB_RELOAD_PIN, &NB_RELOAD_config);
+    GPIO_PinInit(BOARD_WIFI_RELOAD_GPIO, BOARD_WIFI_RELOAD_PORT, BOARD_WIFI_RELOAD_PIN, &WIFI_RELOAD_config);
 
     gpio_pin_config_t LED_BLE_GREEN_config = {
         .pinDirection = kGPIO_DigitalOutput,
@@ -675,8 +682,8 @@ void BOARD_InitPins(void)
                          (~(IOCON_PIO_FUNC_MASK | IOCON_PIO_DIGIMODE_MASK)))
 
                         /* Selects pin function.
-                         * : PORT02 (pin B11) is configured as FC3_TXD_SCL_MISO_WS. */
-                        | IOCON_PIO_FUNC(PIO0_2_FUNC_ALT1)
+                         * : PORT02 (pin B11) is configured as PIO0_2. */
+                        | IOCON_PIO_FUNC(PIO0_2_FUNC_ALT0)
 
                         /* Select Digital mode.
                          * : Enable Digital mode.
@@ -810,19 +817,6 @@ void BOARD_InitPins(void)
                           * : Enable Digital mode.
                           * Digital input is enabled. */
                          | IOCON_PIO_DIGIMODE(PIO0_29_DIGIMODE_DIGITAL));
-
-    IOCON->PIO[0][3] = ((IOCON->PIO[0][3] &
-                         /* Mask bits to zero which are setting */
-                         (~(IOCON_PIO_FUNC_MASK | IOCON_PIO_DIGIMODE_MASK)))
-
-                        /* Selects pin function.
-                         * : PORT03 (pin F8) is configured as FC3_RXD_SDA_MOSI_DATA. */
-                        | IOCON_PIO_FUNC(PIO0_3_FUNC_ALT1)
-
-                        /* Select Digital mode.
-                         * : Enable Digital mode.
-                         * Digital input is enabled. */
-                        | IOCON_PIO_DIGIMODE(PIO0_3_DIGIMODE_DIGITAL));
 
     IOCON->PIO[0][30] =
         ((IOCON->PIO[0][30] &
